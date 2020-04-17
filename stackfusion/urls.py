@@ -20,5 +20,6 @@ from user import views as user_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user-form/',  user_views.SignUp.as_view(), name='signup'),
+    path('user-form/',  user_views.ShowUsers.as_view(), name='signup'),
 
 ]
