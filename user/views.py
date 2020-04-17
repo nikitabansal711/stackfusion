@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from stackfusion import settings
+from user.models import Profile
 from user.serializer import ProfileSerializer
 
 
@@ -19,3 +20,10 @@ class SignUp(APIView):
             recipient_list.append(user.email)
             send_mail(subject, message, email_from, recipient_list)
             return Response({"success": "user '{}' created successfully".format(user_saved.name)})
+
+
+class ShowUsers(APIView):
+    def get(self, request):
+        users = Profile.objects.all()
+        serializer = ProfileSerializer(users, many=True)
+        return Response({"users": serializer.data})
