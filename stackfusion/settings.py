@@ -49,10 +49,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'user',
     'phone_field',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -131,3 +133,5 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
+CORS_ORIGIN_ALLOW_ALL = True

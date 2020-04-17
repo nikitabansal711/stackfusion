@@ -9,16 +9,14 @@ from user.serializer import ProfileSerializer
 
 class SignUp(APIView):
     def post(self, request):
-        user = request.data.get("user")
+        user = request.data
         serializer = ProfileSerializer(data=user)
-        recipient_list = []
         if serializer.is_valid(raise_exception=True):
             user_saved = serializer.save()
             subject = 'confirmation mail'
             message = 'your details have been submitted successfully'
             email_from = settings.EMAIL_HOST_USER
-            recipient_list.append(user.email)
-            send_mail(subject, message, email_from, recipient_list)
+            # send_mail(subject, message, email_from, [request.data['email'], ])
             return Response({"success": "user '{}' created successfully".format(user_saved.name)})
 
 

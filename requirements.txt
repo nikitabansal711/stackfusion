@@ -3,3 +3,4 @@ djangorestframework==3.11.0
 python-dotenv==0.13.0
 django-phone-field==1.8.0
 Gunicorn
+django-cors-headers
