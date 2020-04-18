@@ -19,6 +19,12 @@ from django.urls import path
 from user import views as user_views
 
 urlpatterns = [
+    # admin url used on django site
     path('admin/', admin.site.urls),
+
+    # to submit user form
     path('user-form/', user_views.SignUp.as_view(), name='signup'),
-    path('get-all-users/', user_views.ShowUsers.as_view(), name='showUsers'),]
+
+    # To get all the users data
+    path('get-all-users/', user_views.ShowUsers.as_view(), name='showUsers'),
+]
