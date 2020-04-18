@@ -16,7 +16,7 @@ class SignUp(APIView):
             subject = 'confirmation mail'
             message = 'your details have been submitted successfully'
             email_from = settings.EMAIL_HOST_USER
-            # send_mail(subject, message, email_from, [request.data['email'], ])
+            send_mail(subject, message, email_from, [request.data['email'], ], fail_silently=False)
             return Response({"success": "user '{}' created successfully".format(user_saved.name)})
 
 
